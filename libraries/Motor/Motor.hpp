@@ -1,11 +1,7 @@
 #ifndef MOTOR_H
 #define MOTOR_H
 
-#if ARDUINO >= 100
-  #include "Arduino.h"
-#else
-  #include "WProgram.h"
-#endif
+#include "Arduino.h"
 
 class Motor {
   public:
@@ -16,10 +12,10 @@ class Motor {
     int getVelocidade();
     void config();
   private:
-    int INA;
-    int INB;
-    int PWM;
-    int velocidade;
+    int INA;        //Guarda o numero do pino de configuracao do motor no arduino.
+    int INB;        //Guarda o numero do pino de configuracao do motor no arduino.
+    int PWM;        //Guarda o numero do pino de configuracao pwm do motor no arduino.
+    int velocidade; //Configuracao dodo valor pwm (0 - 255).
 };
 
 #endif

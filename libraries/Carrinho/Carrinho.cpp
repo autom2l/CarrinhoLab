@@ -1,11 +1,10 @@
-#if ARDUINO >= 100
-  #include "Arduino.h"
-#else
-  #include "WProgram.h"
-#endif
-
+#include "Arduino.h"
 #include "Carrinho.h"
 
+  /**************************************************************************************************
+  * Metodo Construtor do carrinho.                                                                  *
+  * Recebe 2 Motores configurados (E reponsabilidade do programador fazer as devidas configuracoes) *
+  ***************************************************************************************************/
 Carrinho::Carrinho(Motor a, Motor b):motorA(a), motorB(b) {
   analogWrite(motorA.getPWM(), motorA.getVelocidade());
   analogWrite(motorB.getPWM(), motorB.getVelocidade());

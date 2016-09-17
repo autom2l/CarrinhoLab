@@ -1,21 +1,20 @@
 #ifndef CARRINHO_H
 #define CARRINHO_H
 
-#if ARDUINO >= 100
-  #include "Arduino.h"
-#else
-  #include "WProgram.h"
-#endif
-
+#include "Arduino.h"
 #include "Motor.h"
+
+ /*******************************************************
+ *    Interface para configuracao geral do carrinho.    *
+ ********************************************************/
 
 class Carrinho {
   public:
-    Carrinho(Motor a, Motor b);
-    void  esquerda();
-    void  direita();
-    void  andar();
-    void  parar();
+    Carrinho(Motor a, Motor b); //Metodo construtor
+    void  esquerda();           //Gira o carrinho para a esquerda.
+    void  direita();            //Gira o carrinho para a direita.
+    void  andar();              //Anda pra frente.
+    void  parar();              //Parar o carrinho.
   private:
     Motor motorA, motorB;
 };

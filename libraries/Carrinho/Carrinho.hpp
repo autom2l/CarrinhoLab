@@ -2,7 +2,7 @@
 #define CARRINHO_H
 
 #include "Arduino.h"
-#include "Motor.h"
+#include "Motor.hpp"
 
  /*******************************************************
  *    Interface para configuracao geral do carrinho.    *

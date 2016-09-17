@@ -1,13 +1,18 @@
-#if ARDUINO >= 100
-  #include "Arduino.h"
-#else
-  #include "WProgram.h"
-#endif
+#include "Arduino.h"
+#include "Motor.hpp"
 
-#include "Motor.h"
+  /************************************************
+  *       Implementacao da interface Motor.hpp    *
+  *************************************************/
 
-Motor::Motor(int mA, int mB, int mPWM, int vel)
-  : INA(mA), INB(mB), PWM(mPWM), velocidade(vel){
+  /********************************************
+  * Metodo construtor do objeto Motor         *
+  * Ja e inicializado com os devidos valores  *
+  * de configuracao.                          *
+  *********************************************/
+Motor::Motor(int mA, int mB, int mPWM, int vel) 
+: INA(mA), INB(mB), PWM(mPWM), velocidade(vel){
+  
 }
 
 int   Motor::getINA(){return INA;}

@@ -2,15 +2,25 @@
 #define MOTOR_H
 
 #include "Arduino.h"
+/*
+  * Confira um unico motor.
+  *
+  *****************************************
+  * E responsabilidade do programador     *
+  * nao repetir a mesma configurcao para  *
+  * dois motores ao mesmo tempo.          *
+  *****************************************
+  *
+*/
 
 class Motor {
   public:
     Motor(int mA, int mB, int mPWM, int vel);
-    int getINA();
-    int getINB();
-    int getPWM();
-    int getVelocidade();
-    void config();
+    int getINA();         //Retorna o pino INA.
+    int getINB();         //Retorna o pino INB.
+    int getPWM();         //Retorna o pinoPWM.
+    int getVelocidade();  //Retorna o valor do pwm(0 - 255).
+    void config();        //Faz as devidaas configuracoes no arquivo principal do arduino.
   private:
     int INA;        //Guarda o numero do pino de configuracao do motor no arduino.
     int INB;        //Guarda o numero do pino de configuracao do motor no arduino.

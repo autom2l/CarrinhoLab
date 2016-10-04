@@ -2,7 +2,7 @@
 #include "Motor.h"
 
   /************************************************
-  *       Implementacao da interface Motor.hpp    *
+  *       Implementacao da interface Motor.h    *
   *************************************************/
 
   /********************************************

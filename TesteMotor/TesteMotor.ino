@@ -47,6 +47,4 @@ void loop() {
 
 }
 
-bool olhar() {
-  return ultrasonic.Ranging(CM) >= 45;
-}
+bool olhar() {return (ultrasonic.Ranging(CM) >= 45);}

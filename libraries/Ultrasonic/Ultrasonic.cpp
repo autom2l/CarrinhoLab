@@ -14,16 +14,10 @@
 
 Ultrasonic::Ultrasonic(int TP, int EP)
   :trigger_pin(TP), echo_pin(EP), time_out(3000) { // 3000 µs = 50cm // 30000 µs = 5 m
-
-   pinMode(TP, OUTPUT);
-   pinMode(EP, INPUT);
 }
 
 Ultrasonic::Ultrasonic(int TP, int EP, long TO)
   :trigger_pin(TP), echo_pin(EP), time_out(TO) {
-
-   pinMode(TP, OUTPUT);
-   pinMode(EP, INPUT);
 }
 
 long Ultrasonic::Timing() {
@@ -43,4 +37,9 @@ long Ultrasonic::Timing() {
 long Ultrasonic::Ranging(bool sys) {
   Timing();
   return sys ? duration /29 / 2 : duration / 74 / 2;
+}
+
+void Ultrasonic::Config() {
+  pinMode(getEchoPin(), OUTPUT);
+  pinMode(getEchoPin(), INPUT);
 }

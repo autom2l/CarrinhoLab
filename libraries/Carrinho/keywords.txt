@@ -1,0 +1,5 @@
+Carrinho  KEYWORD1
+esquerda  KEYWORD2
+direita KEYWORD2
+andar KEYWORD2
+parar KEYWORD2

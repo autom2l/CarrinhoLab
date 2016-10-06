@@ -23,11 +23,11 @@ class Ultrasonic {
 
     long Timing();
     long Ranging(bool sys);
-    void Config();
+    void config();
 
     int getTriggerPin();
     int getEchoPin();
-    
+
   private:
     int trigger_pin, echo_pin;
 	  long time_out, duration;

@@ -29,7 +29,7 @@ long Ultrasonic::Timing() {
 
   digitalWrite(trigger_pin, LOW);
 
-  duration = pulseIn(echo_pin, HIGH,time_out);
+  duration = pulseIn(echo_pin, HIGH, time_out);
 
   return duration == 0 ? time_out : duration;
 }
@@ -39,7 +39,7 @@ long Ultrasonic::Ranging(bool sys) {
   return sys ? duration /29 / 2 : duration / 74 / 2;
 }
 
-void Ultrasonic::Config() {
+void Ultrasonic::config() {
   pinMode(getEchoPin(), OUTPUT);
   pinMode(getEchoPin(), INPUT);
 }

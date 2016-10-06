@@ -38,7 +38,7 @@ Carrinho carrinho(motorA, motorB);
 
 void setup() {
   //Configuracoes gerais dos dipositivos ligados ao Arduino.
-
+  //Configura ambos os motores.
   carrinho.configMotores();
 
   //Configura os pinos dos sensores Frontal e Lateral para seu uso.
@@ -56,4 +56,6 @@ void loop() {
 
 }
 
-bool olhar() {return (ultrasonicFrontal.Ranging(CM) >= 45);}
+bool olhar(Ultrasonic sensor) {
+  return (sensor.Ranging(CM) >= 45);
+}

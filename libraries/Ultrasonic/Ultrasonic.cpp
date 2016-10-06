@@ -23,10 +23,8 @@ Ultrasonic::Ultrasonic(int TP, int EP, long TO)
 long Ultrasonic::Timing() {
   digitalWrite(trigger_pin, LOW);
   delayMicroseconds(2);
-
   digitalWrite(trigger_pin, HIGH);
   delayMicroseconds(10);
-
   digitalWrite(trigger_pin, LOW);
 
   duration = pulseIn(echo_pin, HIGH, time_out);
@@ -43,3 +41,7 @@ void Ultrasonic::config() {
   pinMode(getEchoPin(), OUTPUT);
   pinMode(getEchoPin(), INPUT);
 }
+
+//Getters
+int Ultrasonic::getTriggerPin() {return trigger_pin;}
+int Ultrasonic::getEchoPin() {return echo_pin;}

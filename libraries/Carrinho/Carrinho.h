@@ -15,7 +15,7 @@ class Carrinho {
     void  direita();            //Gira o carrinho para a direita.
     void  andar();              //Anda pra frente.
     void  parar();              //Parar o carrinho.
-    void configMotores();
+    void  configMotores();
   private:
     Motor motorA, motorB;
 };

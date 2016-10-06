@@ -11,7 +11,7 @@ Carrinho::Carrinho(Motor a, Motor b):motorA(a), motorB(b) {
 }
 
 //Configura os pinos dos motores A e B para o funcionamento do motor.
-Carrinho::configMotores() {
+void Carrinho::configMotores() {
   motorA.config();
   motorB.config();
 }

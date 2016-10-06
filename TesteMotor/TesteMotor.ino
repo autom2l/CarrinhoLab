@@ -44,11 +44,9 @@ void loop() {
     carrinho.parar();
     carrinho.esquerda();
   }
-  
+
 }
 
 bool olhar() {
-  if(ultrasonic.Ranging(CM) >= 45)
-    return true;
-  return false;
+  return ultrasonic.Ranging(CM) >= 45;
 }

@@ -24,38 +24,24 @@
 
 //Intanciando um objeto para o sensor ultrasonico frontal e lateral.
 //Configurando o sensor com seus respectivos pinos de trigger e echo
-Ultrasonic ultrasonicFrontal(FrontalTriggerPin, FrontalEchoPin);
-Ultrasonic ultrasonicLateral(LateralTriggerPin, LateralTriggerPin);
+Ultrasonic  *ultrasonicFrontal = new Ultrasonic(FrontalTriggerPin, FrontalEchoPin);
+Ultrasonic  *ultrasonicLateral = new Ultrasonic(LateralTriggerPin, LateralTriggerPin);
 
 //Instanciando um objeto do tipo Motor para o motor A e B.
 //Configura o mortor A e B para usar seus respectivos pinos.
-Motor motorA(IN1, IN2, PWMA, VA);
-Motor motorB(IN3, IN4, PWMB, VB);
+Motor *motorA = new Motor(IN1, IN2, PWMA, VA);
+Motor *motorB = new Motor(IN3, IN4, PWMB, VB);
 
 //Intanciando um objeto do tipos carrinho que recebe dois motores
 //Os dois motores devem estar previamente configurados.
-Carrinho carrinho(motorA, motorB);
+Carrinho *carrinho = new Carrinho(motorA, motorB, ultrasonicFrontal, ultrasonicLateral);
 
 void setup() {
   //Configuracoes gerais dos dipositivos ligados ao Arduino.
   //Configura ambos os motores.
-  carrinho.configMotores();
-
-  //Configura os pinos dos sensores Frontal e Lateral para seu uso.
-  ultrasonicFrontal.config();
-  ultrasonicLateral.config();
+  carrinho->configCarrinho();
 }
 
 void loop() {
-  if(olhar()) carrinho.andar();
 
-  else {
-    carrinho.parar();
-    carrinho.esquerda();
-  }
-
-}
-
-bool olhar(Ultrasonic sensor) {
-  return (sensor.Ranging(CM) >= 45);
 }

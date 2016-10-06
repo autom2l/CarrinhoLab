@@ -15,7 +15,7 @@
 
 class Motor {
   public:
-    Motor(int mA, int mB, int mPWM, int vel);
+    Motor(int, int, int, int);
     int getINA();         //Retorna o pino INA.
     int getINB();         //Retorna o pino INB.
     int getPWM();         //Retorna o pinoPWM.

@@ -40,15 +40,21 @@ void setup() {
 
 void loop() {
   if(!carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
-
+    carrinho->parar();
+    carrinho->direita();
+    carrinho->parar();
   }
   else if(!carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
-
+    carrinho->parar();
+    carrinho->esquerda();
+    carrinho->parar();
   }
   else if(carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
-
+    carrinho->andar();
   }
   else if(carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
-    
+    carrinho->parar();
+    carrinho->esquerda();
+    carrinho->andar();
   }
 }

@@ -2,8 +2,8 @@
 *       Implementacao da interface Motor.h    *
 *************************************************/
 
-#include "Arduino.h"
-#include "Motor.h"
+#include <Arduino.h>
+#include <Motor.h>
 
   /********************************************
   * Metodo construtor do objeto Motor         *

@@ -1,5 +1,5 @@
-#include "Arduino.h"
-#include "Carrinho.h"
+#include <Arduino.h>
+#include <Carrinho.h>
 
   /**************************************************************************************************
   * Metodo Construtor do carrinho.                                                                  *
@@ -56,5 +56,5 @@ void Carrinho::parar() {
 }
 
 //Funcoes de uso dos sensores.
-bool Carrinho::livreAEsquerda() {return (this->sensorLateral->Ranging(CM) > 10);}
-bool Carrinho::livreAFrente() {return (this->sensorFrontal->Ranging(CM) > 10);}
+bool Carrinho::livreAEsquerda() {return (this->sensorLateral->Ranging(CM) > 5);}
+bool Carrinho::livreAFrente() {return (this->sensorFrontal->Ranging(CM) > 5);}

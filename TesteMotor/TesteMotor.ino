@@ -16,32 +16,39 @@
 #define PWMA 12 //Pino PWM do Motor A
 #define VA 130  //Valor analogico PWM
 
-//configuracoes motorB
+//Configuracoes motorB
 #define IN3 3
 #define IN4 4
 #define PWMB 13 //Pino PWM do Motor B
 #define VB 130  //Valor analogico PWM
 
-//Intanciando um objeto para o sensor ultrasonico frontal e lateral.
-//Configurando o sensor com seus respectivos pinos de trigger e echo
-Ultrasonic  *ultrasonicFrontal = new Ultrasonic(FrontalTriggerPin, FrontalEchoPin);
-Ultrasonic  *ultrasonicLateral = new Ultrasonic(LateralTriggerPin, LateralTriggerPin);
-
-//Instanciando um objeto do tipo Motor para o motor A e B.
-//Configura o mortor A e B para usar seus respectivos pinos.
-Motor *motorA = new Motor(IN1, IN2, PWMA, VA);
-Motor *motorB = new Motor(IN3, IN4, PWMB, VB);
-
 //Intanciando um objeto do tipos carrinho que recebe dois motores
 //Os dois motores devem estar previamente configurados.
-Carrinho *carrinho = new Carrinho(motorA, motorB, ultrasonicFrontal, ultrasonicLateral);
+                                  //Criando um nova instancia para o motorA.
+Carrinho *carrinho = new Carrinho(new Motor(IN1, IN2, PWMA, VA),
+                                  //Criando um nova instancia para o motorB.
+                                  new Motor(IN3, IN4, PWMB, VB),
+                                  //Criando um nova instancia para o sensor frontal.
+                                  new Ultrasonic(FrontalTriggerPin, FrontalEchoPin),
+                                  //Criando um nova instancia para o sensor lateral.
+                                  new Ultrasonic(LateralTriggerPin, LateralTriggerPin));
 
 void setup() {
   //Configuracoes gerais dos dipositivos ligados ao Arduino.
-  //Configura ambos os motores.
   carrinho->configCarrinho();
 }
 
 void loop() {
+  if(!carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
 
+  }
+  else if(!carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
+
+  }
+  else if(carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
+
+  }
+  else if(carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
+    
+  }
 }

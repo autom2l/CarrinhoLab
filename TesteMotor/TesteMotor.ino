@@ -1,5 +1,5 @@
-#include <Motor.h>
 #include <Carrinho.h>
+#include <Motor.h>
 #include <Ultrasonic.h>
 
 //Configuracoes do sensor frontal.
@@ -11,19 +11,22 @@
 #define LateralEchoPin 10
 
 //Configuracoes motorA
-#define IN1 0
-#define IN2 1
-#define PWMA 12 //Pino PWM do Motor A
-#define VA 130  //Valor analogico PWM
+#define IN1 2
+#define IN2 3
+#define PWMA 12    //Pino PWM do Motor A
+#define VA 130     //Valor analogico PWM
 
 //Configuracoes motorB
-#define IN3 2
-#define IN4 3
-#define PWMB 13 //Pino PWM do Motor B
-#define VB 130  //Valor analogico PWM
+#define IN3 4
+#define IN4 5
+#define PWMB 13   //Pino PWM do Motor B
+#define VB 130    //Valor analogico PWM
+
+//Ultrasonic sensor(8, 9);
 
 //Intanciando um objeto do tipos carrinho que recebe dois motores
 //Os dois motores devem estar previamente configurados.
+
                                   //Criando um nova instancia para o motorA.
 Carrinho *carrinho = new Carrinho(new Motor(IN1, IN2, PWMA, VA),
                                   //Criando um nova instancia para o motorB.
@@ -31,32 +34,32 @@ Carrinho *carrinho = new Carrinho(new Motor(IN1, IN2, PWMA, VA),
                                   //Criando um nova instancia para o sensor frontal.
                                   new Ultrasonic(FrontalTriggerPin, FrontalEchoPin),
                                   //Criando um nova instancia para o sensor lateral.
-                                  new Ultrasonic(LateralTriggerPin, LateralTriggerPin));
+                                  new Ultrasonic(LateralTriggerPin, LateralEchoPin));
 
 void setup() {
   //Configuracoes gerais dos dipositivos ligados ao Arduino.
+  Serial.begin(9600);
   carrinho->configCarrinho();
-  pinMode(13, OUTPUT);
-  digitalWrite(13, HIGH);
 }
 
 void loop() {
-  // if(!carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
-  //   carrinho->parar();
-  //   carrinho->direita();
-  //   carrinho->parar();
-  // }
-  // else if(!carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
-  //   carrinho->parar();
-  //   carrinho->esquerda();
-  //   carrinho->parar();
-  // }
-  // else if(carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
-  //   carrinho->andar();
-  // }
-  // else if(carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
-  //   carrinho->parar();
-  //   carrinho->esquerda();
-  //   carrinho->andar();
-  // }
+   if(!carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
+     carrinho->parar();
+     carrinho->direita();
+     carrinho->parar();
+   }
+   else if(!carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
+     carrinho->parar();
+     carrinho->esquerda();
+     carrinho->parar();
+   }
+   else if(carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
+     carrinho->andar();
+   }
+   else if(carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
+     carrinho->parar();
+     carrinho->esquerda();
+     carrinho->parar();
+     carrinho->andar();
+   }
 }

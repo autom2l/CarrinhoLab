@@ -7,18 +7,18 @@
 #define FrontalEchoPin 9
 
 //Configuracoes do sensor lateral.
-#define LateralTriggerPin 6
-#define LateralEchoPin 7
+#define LateralTriggerPin 11
+#define LateralEchoPin 10
 
 //Configuracoes motorA
-#define IN1 1
-#define IN2 2
+#define IN1 0
+#define IN2 1
 #define PWMA 12 //Pino PWM do Motor A
 #define VA 130  //Valor analogico PWM
 
 //Configuracoes motorB
-#define IN3 3
-#define IN4 4
+#define IN3 2
+#define IN4 3
 #define PWMB 13 //Pino PWM do Motor B
 #define VB 130  //Valor analogico PWM
 
@@ -36,25 +36,27 @@ Carrinho *carrinho = new Carrinho(new Motor(IN1, IN2, PWMA, VA),
 void setup() {
   //Configuracoes gerais dos dipositivos ligados ao Arduino.
   carrinho->configCarrinho();
+  pinMode(13, OUTPUT);
+  digitalWrite(13, HIGH);
 }
 
 void loop() {
-  if(!carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
-    carrinho->parar();
-    carrinho->direita();
-    carrinho->parar();
-  }
-  else if(!carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
-    carrinho->parar();
-    carrinho->esquerda();
-    carrinho->parar();
-  }
-  else if(carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
-    carrinho->andar();
-  }
-  else if(carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
-    carrinho->parar();
-    carrinho->esquerda();
-    carrinho->andar();
-  }
+  // if(!carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
+  //   carrinho->parar();
+  //   carrinho->direita();
+  //   carrinho->parar();
+  // }
+  // else if(!carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
+  //   carrinho->parar();
+  //   carrinho->esquerda();
+  //   carrinho->parar();
+  // }
+  // else if(carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
+  //   carrinho->andar();
+  // }
+  // else if(carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
+  //   carrinho->parar();
+  //   carrinho->esquerda();
+  //   carrinho->andar();
+  // }
 }

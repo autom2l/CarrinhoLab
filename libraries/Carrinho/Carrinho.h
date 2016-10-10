@@ -13,7 +13,7 @@ class Carrinho {
   public:
     //Metodo construtor.
     Carrinho(Motor*, Motor*, Ultrasonic*, Ultrasonic*);
-    
+
     //Funcao de configuracao do carrinho.
     void  configCarrinho();
 

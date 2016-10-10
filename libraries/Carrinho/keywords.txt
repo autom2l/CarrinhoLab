@@ -1,4 +1,5 @@
 Carrinho  KEYWORD1
+configCarrinho  KEYOWRD2
 esquerda  KEYWORD2
 direita KEYWORD2
 andar KEYWORD2

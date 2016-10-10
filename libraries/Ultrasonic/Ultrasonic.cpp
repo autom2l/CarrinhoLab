@@ -13,35 +13,31 @@
 #include "Ultrasonic.h"
 
 Ultrasonic::Ultrasonic(int TP, int EP)
-  :trigger_pin(TP), echo_pin(EP), time_out(3000) { // 3000 µs = 50cm // 30000 µs = 5 m
-}
+  :trigPin(TP), echoPin(EP), timeOut(3000){}
 
 Ultrasonic::Ultrasonic(int TP, int EP, long TO)
-  :trigger_pin(TP), echo_pin(EP), time_out(TO) {
+  :trigPin(TP), echoPin(EP), timeOut(TO){}
+
+void Ultrasonic::Config() {
+  pinMode(this->trigPin, OUTPUT);
+  pinMode(this->echoPin, INPUT);
 }
 
-long Ultrasonic::Timing() {
-  digitalWrite(trigger_pin, LOW);
+void Ultrasonic::Timing() {
+  digitalWrite(this->trigPin, LOW);
   delayMicroseconds(2);
-  digitalWrite(trigger_pin, HIGH);
+  digitalWrite(this->trigPin, HIGH);
   delayMicroseconds(10);
-  digitalWrite(trigger_pin, LOW);
+  digitalWrite(this->trigPin, LOW);
 
-  duration = pulseIn(echo_pin, HIGH, time_out);
+  this->duration = pulseIn(this->echoPin, HIGH, this->timeOut);
 
-  return duration == 0 ? time_out : duration;
+  if (duration == 0)
+	 this->duration = this->timeOut;
 }
 
-long Ultrasonic::Ranging(bool sys) {
+long Ultrasonic::Ranging(int sys) {
   Timing();
-  return sys ? duration /29 / 2 : duration / 74 / 2;
+	return sys ? this->duration /29 / 2 :
+               this->duration / 74 / 2;
 }
-
-void Ultrasonic::config() {
-  pinMode(getEchoPin(), OUTPUT);
-  pinMode(getEchoPin(), INPUT);
-}
-
-//Getters
-int Ultrasonic::getTriggerPin() {return trigger_pin;}
-int Ultrasonic::getEchoPin() {return echo_pin;}

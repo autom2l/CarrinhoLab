@@ -43,15 +43,15 @@ void setup() {
 }
 
 void loop() {
-   if(!carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
+   if(!carrinho->livreAFrente() && !carrinho->livreAEsquerda())
      carrinho->direita();
-   }
-   else if(!carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
+
+   else if(!carrinho->livreAFrente() && carrinho->livreAEsquerda())
      carrinho->esquerda();
-   }
-   else if(carrinho->livreAFrente() && !carrinho->livreAEsquerda()) {
+
+   else if(carrinho->livreAFrente() && !carrinho->livreAEsquerda())
      carrinho->andar();
-   }
+
    else if(carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
      carrinho->esquerda();
      carrinho->andar();

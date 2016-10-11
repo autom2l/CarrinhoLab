@@ -6,7 +6,7 @@
 #include <Ultrasonic.h>
 
  /*******************************************************
- *    Interface para configuracao geral do carrinho.    *
+ *    Interface de configuracao geral do carrinho.    *
  ********************************************************/
 
 class Carrinho {

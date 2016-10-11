@@ -19,6 +19,7 @@ void Carrinho::configCarrinho() {
 
 //Vira o carrinho para a esquerda.
 void Carrinho::esquerda() {
+  parar();
   digitalWrite(motorA->getINA(), LOW);
   digitalWrite(motorA->getINB(), HIGH);
   digitalWrite(motorB->getINA(), HIGH);
@@ -28,6 +29,7 @@ void Carrinho::esquerda() {
 
 //Vira o carrinho para a direita.
 void Carrinho::direita() {
+  parar();
   digitalWrite(motorA->getINA(), HIGH);
   digitalWrite(motorA->getINB(), LOW);
   digitalWrite(motorB->getINA(), LOW);
@@ -37,11 +39,11 @@ void Carrinho::direita() {
 
 //Faz o carrinho andar pra frente.
 void Carrinho::andar(){
+  parar();
   digitalWrite(motorA->getINA(), HIGH);
   digitalWrite(motorA->getINB(), LOW);
   digitalWrite(motorB->getINA(), HIGH);
   digitalWrite(motorB->getINB(), LOW);
-  delay(200);
 }
 
 //Faz o carrinho parar.
@@ -50,7 +52,7 @@ void Carrinho::parar() {
   digitalWrite(motorA->getINB(), HIGH);
   digitalWrite(motorB->getINA(), HIGH);
   digitalWrite(motorB->getINB(), HIGH);
-  delay(800);
+  delay(1500);
 }
 
 //Funcoes de uso dos sensores.

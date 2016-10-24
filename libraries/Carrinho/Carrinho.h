@@ -22,11 +22,12 @@ class Carrinho {
     void  direita();              //Gira o carrinho para a direita.
     void  andar();                //Anda pra frente.
     void  parar();                //Parar o carrinho.
-
-    //Funcoes de uso dos sensores.
+    
+    int olhar();
+  private:
     bool livreAEsquerda();
     bool livreAFrente();
-  private:
+
     Motor *motorA, *motorB;
     Ultrasonic *sensorFrontal, *sensorLateral;
 };

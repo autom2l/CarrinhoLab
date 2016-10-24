@@ -15,17 +15,21 @@
 
 class Motor {
   public:
-    Motor(int, int, int, int);
-    int getINA();         //Retorna o pino INA.
-    int getINB();         //Retorna o pino INB.
-    int getPWM();         //Retorna o pinoPWM.
-    int getVelocidade();  //Retorna o valor do pwm(0 - 255).
-    void config();        //Faz as devidaas configuracoes no arquivo principal do arduino.
+    Motor(int, int, int, int);  //Construtor do motor com PWM.
+    Motor(int, int, int);       //Construtor do motor sem PWM. (E necessario desativar os pinos de pwm)
+
+    int getINA();               //Retorna o pino INA.
+    int getINB();               //Retorna o pino INB.
+    int getPWM();               //Retorna o pinoPWM.
+    int getVelocidade();        //Retorna o valor do pwm(0 - 255).
+    void config();              //Faz as devidaas configuracoes no arquivo principal do arduino.
+
   private:
-    int INA;        //Guarda o numero do pino de configuracao do motor no arduino.
-    int INB;        //Guarda o numero do pino de configuracao do motor no arduino.
-    int PWM;        //Guarda o numero do pino de configuracao pwm do motor no arduino.
-    int velocidade; //Configuracao dodo valor pwm (0 - 255).
+    int INA,                    //Guarda o numero do pino de configuracao do motor no arduino.
+        INB,                    //Guarda o numero do pino de configuracao do motor no arduino.
+        PWM;                    //Guarda o numero do pino de configuracao pwm do motor no arduino.
+
+    int velocidade;       //Configuracao dodo valor pwm (0 - 255).
 };
 
 #endif

@@ -3,26 +3,25 @@
 #include <Ultrasonic.h>
 
 //Configuracoes do sensor frontal.
-#define FrontalTriggerPin 8
-#define FrontalEchoPin 9
+#define FrontalTriggerPin  8
+#define FrontalEchoPin     9
 
 //Configuracoes do sensor lateral.
-#define LateralTriggerPin 11
-#define LateralEchoPin 10
+#define LateralTriggerPin  11
+#define LateralEchoPin     10
 
 //Configuracoes motorA
-#define IN1 2
-#define IN2 3
-#define PWMA 12    //Pino PWM do Motor A
-#define VA 130     //Valor analogico PWM
+#define IN1                2
+#define IN2                3
+#define PWMA               12      //Pino PWM do Motor A
+#define VA                 180     //Valor analogico PWM
 
 //Configuracoes motorB
-#define IN3 4
-#define IN4 5
-#define PWMB 13   //Pino PWM do Motor B
-#define VB 130    //Valor analogico PWM
+#define IN3                4
+#define IN4                5
+#define PWMB               13     //Pino PWM do Motor B
+#define VB                 130    //Valor analogico PWM
 
-//Ultrasonic sensor(8, 9);
 
 //Intanciando um objeto do tipos carrinho que recebe dois motores
 //Os dois motores devem estar previamente configurados.
@@ -43,17 +42,5 @@ void setup() {
 }
 
 void loop() {
-   if(!carrinho->livreAFrente() && !carrinho->livreAEsquerda())
-     carrinho->direita();
-
-   else if(!carrinho->livreAFrente() && carrinho->livreAEsquerda())
-     carrinho->esquerda();
-
-   else if(carrinho->livreAFrente() && !carrinho->livreAEsquerda())
-     carrinho->andar();
-
-   else if(carrinho->livreAFrente() && carrinho->livreAEsquerda()) {
-     carrinho->esquerda();
-     carrinho->andar();
-   }
+    if(carrinho->olhar() == 4)
 }

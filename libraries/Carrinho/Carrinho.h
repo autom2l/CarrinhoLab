@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <Motor.h>
 #include <Ultrasonic.h>
+#include <Servo.h>
 
  /*******************************************************
  *    Interface de configuracao geral do carrinho.    *
@@ -12,8 +13,8 @@
 class Carrinho {
   public:
     //Metodo construtor.
-    Carrinho(Motor*, Motor*, Ultrasonic*, Ultrasonic*);
-
+    Carrinho(Motor*, Motor*, Ultrasonic*, Servo*);
+    Carrinho(Motor*, Motor*, Ultrasonic*, Ultrasonic*, Servo*);
     //Funcao de configuracao do carrinho.
     void  configCarrinho();
 
@@ -22,14 +23,20 @@ class Carrinho {
     void  direita();              //Gira o carrinho para a direita.
     void  andar();                //Anda pra frente.
     void  parar();                //Parar o carrinho.
-    
-    int olhar();
-  private:
-    bool livreAEsquerda();
-    bool livreAFrente();
 
+    void setMotor(char, int);
+
+    bool olharDireita();
+    bool olharEsquerda();
+    void olharFrente();
+
+    bool direcaoLivre();
+    bool livreAEsquerda();
+
+  private:
     Motor *motorA, *motorB;
     Ultrasonic *sensorFrontal, *sensorLateral;
+    Servo *servo;
 };
 
 #endif

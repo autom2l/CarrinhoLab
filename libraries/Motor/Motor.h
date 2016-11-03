@@ -22,8 +22,8 @@ class Motor {
     int getINB();               //Retorna o pino INB.
     int getPWM();               //Retorna o pinoPWM.
     int getVelocidade();        //Retorna o valor do pwm(0 - 255).
+    void setVelocidade(int);
     void config();              //Faz as devidaas configuracoes no arquivo principal do arduino.
-
   private:
     int INA,                    //Guarda o numero do pino de configuracao do motor no arduino.
         INB,                    //Guarda o numero do pino de configuracao do motor no arduino.

@@ -39,6 +39,5 @@ void Ultrasonic::Timing() {
 
 long Ultrasonic::Ranging(int sys) {
   Timing();
-	return sys ? this->duration /29 / 2 :
-               this->duration / 74 / 2;
+	return sys ? this->duration /29 / 2 : this->duration / 74 / 2;
 }

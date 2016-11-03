@@ -1,27 +1,26 @@
 #include <Carrinho.h>
 #include <Motor.h>
 #include <Ultrasonic.h>
+#include <Servo.h>
 
 //Configuracoes do sensor frontal.
-#define FrontalTriggerPin  8
-#define FrontalEchoPin     9
+#define FrontalTriggerPin  9
+#define FrontalEchoPin     7
 
-//Configuracoes do sensor lateral.
-#define LateralTriggerPin  11
-#define LateralEchoPin     10
+#define LateralTriggerPin  13
+#define LateralEchoPin 12
 
 //Configuracoes motorA
 #define IN1                2
 #define IN2                3
-#define PWMA               12      //Pino PWM do Motor A
-#define VA                 180     //Valor analogico PWM
+#define PWMA               6      //Pino PWM do Motor A
+#define VA                 130     //Valor analogico PWM
 
 //Configuracoes motorB
 #define IN3                4
 #define IN4                5
-#define PWMB               13     //Pino PWM do Motor B
-#define VB                 130    //Valor analogico PWM
-
+#define PWMB               11     //Pino PWM do Motor B
+#define VB                 100    //Valor analogico PWM
 
 //Intanciando um objeto do tipos carrinho que recebe dois motores
 //Os dois motores devem estar previamente configurados.
@@ -32,8 +31,10 @@ Carrinho *carrinho = new Carrinho(new Motor(IN1, IN2, PWMA, VA),
                                   new Motor(IN3, IN4, PWMB, VB),
                                   //Criando um nova instancia para o sensor frontal.
                                   new Ultrasonic(FrontalTriggerPin, FrontalEchoPin),
-                                  //Criando um nova instancia para o sensor lateral.
-                                  new Ultrasonic(LateralTriggerPin, LateralEchoPin));
+                                  //Criando uma nova intancia prar o sensor lateral.
+                                  new Ultrasonic(LateralTriggerPin, LateralEchoPin),
+                                  //Criando um nova instancia para o servo motor.
+                                  new Servo());
 
 void setup() {
   //Configuracoes gerais dos dipositivos ligados ao Arduino.
@@ -42,5 +43,6 @@ void setup() {
 }
 
 void loop() {
-    if(carrinho->olhar() == 4)
+  carrinho->parar();
+  carrinho->direita();
 }

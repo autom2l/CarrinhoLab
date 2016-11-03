@@ -13,9 +13,9 @@
 Motor::Motor(int mA, int mB, int mPWM, int vel)
   : INA(mA), INB(mB), PWM(mPWM) {
   //Garante que o valor para o PWM esteja entre 0 e 255.
-  if(vel <= 255 || vel >= 0) velocidade = vel;
-  else if(vel > 255) velocidade = 255;
-  else if(vel < 0)   velocidade = 0;
+  if(vel <= 255 || vel >= 0)  velocidade = vel;
+  else if(vel > 255)          velocidade = 255;
+  else if(vel < 0)            velocidade = 0;
 }
 
 Motor::Motor(int mA, int mB, int mPWM)
@@ -30,6 +30,10 @@ int   Motor::getPWM(){return PWM;}
 
 //Retorna o valor analogico configurado para o PWM.
 int   Motor::getVelocidade(){return velocidade;}
+
+void  Motor::setVelocidade(int newVel) {
+  velocidade = newVel;
+}
 
 void  Motor::config() {
   pinMode(getINA() ,OUTPUT);

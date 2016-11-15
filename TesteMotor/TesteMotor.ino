@@ -14,7 +14,7 @@
 #define IN1                2
 #define IN2                3
 #define PWMA               6      //Pino PWM do Motor A
-#define VA                 130     //Valor analogico PWM
+#define VA                 128     //Valor analogico PWM
 
 //Configuracoes motorB
 #define IN3                4
@@ -43,6 +43,18 @@ void setup() {
 }
 
 void loop() {
-  carrinho->parar();
-  carrinho->direita();
+  switch(carrinho->verificar()){
+    case 1:
+      carrinho->esquerda();
+      break;
+    case 2:
+      carrinho->esquerda();
+      carrinho->esquerda();
+      break;
+    case 3:
+      carrinho->andar();
+      break;
+    default:
+      break;
+  }
 }

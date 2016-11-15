@@ -1,6 +1,4 @@
-#include <Arduino.h>
 #include <Carrinho.h>
-
 
   /**************************************************************************************************
   * Metodo Construtor do carrinho.                                                                  *
@@ -27,45 +25,57 @@ void Carrinho::configCarrinho() {
 
 //Vira o carrinho para a esquerda.
 void Carrinho::esquerda() {
-  digitalWrite(motorA->getINA(), LOW);
+  this->setMotor('a', 255);
+  this->setMotor('b', 200);
+  //digitalWrite(motorA->getINA(), LOW);
+  //digitalWrite(motorA->getINB(), HIGH);
+  digitalWrite(motorA->getINA(), HIGH);
   digitalWrite(motorA->getINB(), HIGH);
   digitalWrite(motorB->getINA(), HIGH);
   digitalWrite(motorB->getINB(), LOW);
-  olharFrente();
-  delay(200);
+  delay(700);
+  this->parar();
 }
 
 //Vira o carrinho para a direita.
 void Carrinho::direita() {
-  this->setMotor('a', 140);
-  this->setMotor('b', 160);
-  delay(500);
+  this->setMotor('a', 200);
+  this->setMotor('b', 255);
   digitalWrite(motorA->getINA(), HIGH);
   digitalWrite(motorA->getINB(), LOW);
-  digitalWrite(motorB->getINA(), LOW);
+  //digitalWrite(motorB->getINA(), LOW);
+  //digitalWrite(motorB->getINB(), HIGH);
+  digitalWrite(motorB->getINA(), HIGH);
   digitalWrite(motorB->getINB(), HIGH);
-  olharFrente();
+  delay(590);
+  this->parar();
 }
 
 //Faz o carrinho andar pra frente.
 void Carrinho::andar(){
+  this->setMotor('a', 255);
+  this->setMotor('b', 200);
   digitalWrite(motorA->getINA(), HIGH);
   digitalWrite(motorA->getINB(), LOW);
   digitalWrite(motorB->getINA(), HIGH);
   digitalWrite(motorB->getINB(), LOW);
-  delay(600);
+  delay(500);
 }
 
 //Faz o carrinho parar.
 void Carrinho::parar() {
   this->setMotor('a', 255);
   this->setMotor('b', 255);
-  delay(1000);
   digitalWrite(motorA->getINA(), HIGH);
   digitalWrite(motorA->getINB(), HIGH);
   digitalWrite(motorB->getINA(), HIGH);
   digitalWrite(motorB->getINB(), HIGH);
+  delay(500);
 }
+
+/******************************************
+ *      Funcao de configuracao do motor   *
+ ******************************************/
 
 void Carrinho::setMotor(char motor, int newVel) {
   if(motor == 'A' || motor == 'a') {
@@ -81,24 +91,23 @@ void Carrinho::setMotor(char motor, int newVel) {
   }
 }
 
-bool Carrinho::direcaoLivre() {
-  delay(200);
-  return (sensorFrontal->Ranging(CM) > 8);
+bool Carrinho::livreAFrente() {
+  return (sensorFrontal->Ranging(CM) > 15);
 }
 
 bool Carrinho::livreAEsquerda() {
-  delay(200);
-  return (sensorLateral->Ranging(CM) > 8);
+  return (sensorLateral->Ranging(CM) > 15);
 }
 
-bool Carrinho::olharDireita(){
-  servo->write(170);
-  return this->direcaoLivre();
-}
-
-bool Carrinho::olharEsquerda(){
-  servo->write(3);
-  return this->direcaoLivre();
+int Carrinho::verificar(){
+  this->parar();
+  if(this->livreAEsquerda())
+    return 1;
+  if(!this->livreAEsquerda() && !this->livreAFrente())
+    return 2;
+  if(this->livreAFrente() && !this->livreAEsquerda())
+    return 3;
+  return 0;
 }
 
 void Carrinho::olharFrente() {

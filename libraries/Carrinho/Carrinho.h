@@ -15,6 +15,7 @@ class Carrinho {
     //Metodo construtor.
     Carrinho(Motor*, Motor*, Ultrasonic*, Servo*);
     Carrinho(Motor*, Motor*, Ultrasonic*, Ultrasonic*, Servo*);
+
     //Funcao de configuracao do carrinho.
     void  configCarrinho();
 
@@ -26,12 +27,10 @@ class Carrinho {
 
     void setMotor(char, int);
 
-    bool olharDireita();
-    bool olharEsquerda();
-    void olharFrente();
-
-    bool direcaoLivre();
+    bool livreAFrente();
     bool livreAEsquerda();
+    int verificar();
+    void olharFrente();
 
   private:
     Motor *motorA, *motorB;

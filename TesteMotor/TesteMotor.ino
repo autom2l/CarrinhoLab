@@ -46,10 +46,10 @@ void loop() {
   switch(carrinho->verificar()){
     case 1:
       carrinho->esquerda();
+      carrinho->andar();
       break;
     case 2:
-      carrinho->esquerda();
-      carrinho->esquerda();
+      carrinho->meiaVolta();
       break;
     case 3:
       carrinho->andar();

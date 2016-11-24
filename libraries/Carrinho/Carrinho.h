@@ -13,19 +13,20 @@
 class Carrinho {
   public:
     //Metodo construtor.
-    Carrinho(Motor*, Motor*, Ultrasonic*, Servo*);
     Carrinho(Motor*, Motor*, Ultrasonic*, Ultrasonic*, Servo*);
+    Carrinho(Motor*, Motor*, Ultrasonic*, Ultrasonic*);
 
     //Funcao de configuracao do carrinho.
     void  configCarrinho();
 
     //Funcoes de acao do carrinho.
     void  esquerda();             //Gira o carrinho para a esquerda.
-    void  direita();              //Gira o carrinho para a direita.
+    void  meiaVolta();            //Vira o carrinho 180 graus.
     void  andar();                //Anda pra frente.
     void  parar();                //Parar o carrinho.
 
-    void setMotor(char, int);
+    void setMotorA(int);
+    void setMotorB(int);
 
     bool livreAFrente();
     bool livreAEsquerda();

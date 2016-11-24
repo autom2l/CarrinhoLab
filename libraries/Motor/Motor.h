@@ -15,7 +15,6 @@
 
 class Motor {
   public:
-    Motor(int, int, int, int);  //Construtor do motor com PWM.
     Motor(int, int, int);       //Construtor do motor sem PWM. (E necessario desativar os pinos de pwm)
 
     int getINA();               //Retorna o pino INA.

@@ -20,7 +20,7 @@ class Ultrasonic {
   public:
     //Construtores.
     Ultrasonic(int TP, int EP);
-	  Ultrasonic(int TP, int EP, long TO);
+    Ultrasonic(int TP, int EP, long TO);
 
     //Funcoes.
     void Timing();
@@ -28,7 +28,7 @@ class Ultrasonic {
     void Config();
   private:
     int trigPin, echoPin;
-	  long  timeOut, duration;
+    long  timeOut, duration;
 };
 
 #endif
